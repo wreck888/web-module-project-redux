@@ -6,7 +6,8 @@ import { removeFavorite } from '../actions/favoritesActions';
 
 const FavoriteMovieList = (props) => {
     const favorites = props.favorites;
-    
+    const { removeFavorite } = props;
+
 const handleDeleteClick = (id) => {
     removeFavorite(id)
 }
@@ -18,7 +19,7 @@ const handleDeleteClick = (id) => {
                 return <div key={movie.id}>
                     <Link className="btn btn-light savedButton" to={`/movies/${movie.id}`}>
                         {movie.title}
-                        <span ><span className="material-icons">remove_circle</span></span>
+                        <span onClick={()=>{handleDeleteClick(movie.id)}}><span className="material-icons">remove_circle</span></span>
                     </Link> 
                 </div>
             })
